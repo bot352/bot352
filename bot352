@@ -1,0 +1,643 @@
+Q1.Program to find the sum and average and percentage of 2 numbers.
+Code:-
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b, sum=0;
+    float avg=0,per=0;
+
+    cout << "Enter Two Numbers: ";
+    cin >> a >> b;
+    sum = a + b;
+    avg=sum/2.0;
+    per=avg; // because logic of avg and percentage is same.
+
+    cout << "\nSum: " << sum;
+    cout<<"\nAverage: "<<avg<<endl;
+    cout<<"\nPercentage: "<<per;
+
+    return 0;
+}
+Q2.Program to check the prime number or not.
+
+Code:-
+
+#include <iostream>
+using namespace std;
+
+// Name of class is PrimeChecker u can give it as per ure choice & isPrime() is a function.
+
+class PrimeChecker {
+public:
+    bool isPrime(int n) {
+        if (n < 2) return false;
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+};
+
+int main() {
+    PrimeChecker checker;  
+// here checker is object (used to call the isPrime() function in main() function.
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    cout << (checker.isPrime(num) ? "Prime Number" : "Not a Prime Number");
+    return 0;
+}
+
+Q3.Program to find the greatest number.
+Code:-
+
+#include <iostream>
+using namespace std;
+
+// Name of class is GreatestNumber u can give it as per ure choice & findGreatest() is a function.
+
+class GreatestNumber {
+public:
+    int findGreatest(int a, int b, int c) {
+        return (a > b && a > c) ? a : (b > c ? b : c);
+    }
+};
+
+int main() {
+// here finder is object (used to call the findGreatest() function in main() function.
+    GreatestNumber finder; 
+    int x, y, z;
+    cout << "Enter three numbers: ";
+    cin >> x >> y >> z;
+    cout << "Greatest Number: " << finder.findGreatest(x, y, z);
+    return 0;
+}
+Q4.Write a program to display student name using classes and objects.
+
+Viva Conceptual: 
+Classes:- are like blueprints, and objects:- are the things made from them. A class defines what properties and behaviors an object will have. When we create an object, we are basically bringing the class to life with real values. 
+For example, if a class is "Car," an object can be "Honda City." 
+Code:-
+
+#include <iostream>
+using namespace std;
+
+// Name of class is Student u can give it as per ure choice & getName() displayName() is a function.
+
+class Student {
+public:
+    string name; // variable to store name of student.
+
+    void getName() {
+     cout << "Enter student name: ";
+     cin >> name;
+    }
+
+    void displayName() {
+cout << "Student Name: " << name;
+    }
+};
+
+int main() {
+    Student s;  // Creating an object called s.
+    s.getName(); //calling the function.
+    s.displayName();
+    return 0;
+}
+Q5.Program Accessing the data member's 
+
+Viva Conceptual: 
+A Data member is a variable declared inside a class to store data related to objects.
+In simple words, they are like properties or characteristics of an object. For example, in a Car class, color and speed can be data members because every car object will have these values.
+Code:-
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    string name;  // Data member
+
+    void setName(string n) {
+        name = n;  // Accessing & modifying data member
+    }
+
+    void displayName() {
+        cout << "Student Name: " << name;
+    }
+};
+
+int main() {
+    Student s;  // Creating an object
+    string studentName;
+    cout << "Enter student name: ";
+    cin >> studentName;
+
+    s.setName(studentName);  // Accessing data member via function
+    s.displayName();  // Displaying data member value
+    return 0;
+}
+Q6.Program find the minimum and maximum number. 
+Code:-
+
+#include <iostream>
+using namespace std;
+
+//here MinMaxFinder is the name of class & findMinMax() is the function.
+
+class MinMaxFinder {
+public:
+    void findMinMax(int a, int b, int c) {
+        int minNum = (a < b && a < c) ? a : (b < c ? b : c);
+        int maxNum = (a > b && a > c) ? a : (b > c ? b : c);
+        cout << "Minimum: " << minNum << "\nMaximum: " << maxNum;
+    }
+};
+
+int main() {
+   //finder is the name of Object which is calling findMinMax()
+    MinMaxFinder finder; 
+    int x, y, z;
+    cout << "Enter three numbers: ";
+    cin >> x >> y >> z;
+    finder.findMinMax(x, y, z);
+    return 0;
+}
+Q7.Program of friend function. 
+
+Viva Conceptual: 
+A friend function:- is a function that is not a member of a class but can still access its private and protected data.
+
+We declare it inside the class using the friend keyword. It’s useful when we need external functions to work closely with class data without making everything public.
+Code:-
+
+#include <iostream>
+using namespace std;
+
+class Number {
+    int num;  // Private data member
+
+public:
+    void setNumber(int n) {
+        num = n;
+    }
+
+    // Declaring friend function
+    friend void display(Number n);
+};
+
+// Friend function definition
+void display(Number n) {
+    cout << "Number: " << n.num;
+}
+
+int main() {
+    Number obj;
+    int x;
+    cout << "Enter a number: ";
+    cin >> x;
+    obj.setNumber(x);
+    display(obj);  // Calling friend function
+    return 0;
+}
+Q8.Program of array of pointers.
+
+Viva Conceptual: 
+An Array of Pointers is a collection of memory addresses stored in an array, where each element points to a separate variable or object.
+
+Instead of storing actual values, this array holds addresses of variables. This is useful when we need to manage multiple memory locations dynamically.
+Code:-
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[5], *ptr;  // Array of 5 integers and a pointer
+
+    cout << "Enter 5 numbers: ";
+    for (int i = 0; i < 5; i++) {  
+        cin >> arr[i];  // Taking array input
+    }
+
+    ptr = arr;  // Pointer points to the first element of the array
+
+    cout << "Array elements: ";
+    for (int i = 0; i < 5; i++) {  
+        cout << *(ptr + i) << " ";  // Accessing elements using pointer arithmetic
+    }
+
+    return 0;  // End of program
+}
+Q9.Write a program of constructors with parameters.
+
+Viva Conceptual: 
+Constructor is a special function that gets called automatically when an object is created, mainly used for initializing values.
+
+Destructor is a special function that gets called automatically when an object is destroyed, used for releasing resources.
+
+Parameterized Constructor is a constructor that takes arguments to initialize an object with specific values when it is created.
+Code:-
+
+#include <iostream>
+using namespace std;
+
+class Student {
+    string name;  // Private data member
+
+public:
+    // Parameterized Constructor
+    Student(string n) {
+        name = n;
+    }
+
+    void display() {
+        cout << "Student Name: " << name;
+    }
+};
+
+int main() {
+    string studentName;
+    cout << "Enter student name: ";
+    cin >> studentName;
+
+    Student s(studentName);  // Object created, constructor called
+    s.display();  // Display the student name
+    return 0;
+}
+Q10.Program following example explains how addition operator can be overloaded.
+Code:-
+
+#include <iostream>
+using namespace std;
+
+class Add {
+    int value;
+public:
+    Add(int x) { value = x; }
+
+    // Overloading the + operator
+    Add operator+(Add obj) {
+        return Add(value + obj.value);
+    }
+
+    void show() {
+        cout << "Result: " << value << endl;
+    }
+};
+
+int main() {
+    Add obj1(10), obj2(20);
+    Add result = obj1 + obj2;  // Calls overloaded + operator
+    result.show();
+    return 0;
+}
+Q11.Program for virtual function 
+Code:-
+
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    virtual void show() {  // Virtual function
+        cout << "Base class function\n";
+    }
+};
+
+class Derived : public Base {
+public:
+    void show() {  // Overriding the base class function
+        cout << "Derived class function\n";
+    }
+};
+
+int main() {
+    Base* ptr;   // Pointer of base class
+    Derived d;   // Object of derived class
+    ptr = &d;    // Base class pointer pointing to derived class object
+    ptr->show(); // Calls derived class function due to virtual function
+    return 0;
+}
+Q12.pure virtual function 
+Code:-
+
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    virtual void area() = 0;  // Pure virtual function
+};
+
+class Circle : public Shape {
+public:
+    void area() {  // Overriding pure virtual function
+        cout << "Area of Circle: π * r * r\n";
+    }
+};
+
+int main() {
+    Shape* s;  // Pointer of abstract class
+    Circle c;  // Object of derived class
+    s = &c;    // Base class pointer pointing to derived class object
+    s->area(); // Calls overridden function in derived class
+    return 0;
+}
+Q13.Write a program for this pointer.
+Code:-
+
+#include <iostream>
+using namespace std;
+
+class Student {
+    string name;
+
+public:
+    void setName(string name) {
+        this->name = name;  // Using 'this' pointer to refer to the current object's variable
+    }
+
+    void display() {
+        cout << "Student Name: " << this->name;  // Using 'this' pointer (optional here)
+    }
+};
+
+int main() {
+    Student s;
+    string studentName;
+    cout << "Enter student name: ";
+    cin >> studentName;
+
+    s.setName(studentName);  // Setting name using this pointer
+    s.display();  // Displaying name
+    return 0;
+}
+Q14.Program for abstract class.
+Code:-
+
+#include <iostream>
+using namespace std;
+
+class Shape {  // Abstract class
+public:
+    virtual void area() = 0;  // Pure virtual function
+};
+
+class Circle : public Shape {
+public:
+    void area() {  // Overriding pure virtual function
+        cout << "Area of Circle: π * r * r\n";
+    }
+};
+
+int main() {
+    // Shape s;  // This would give an error because abstract classes cannot be instantiated
+    Shape* s;  // Pointer of abstract class
+    Circle c;  // Object of derived class
+    s = &c;    // Base class pointer pointing to derived class object
+    s->area(); // Calls overridden function in derived class
+
+    return 0;
+}
+Q15.Program for Single inheritance 
+
+Viva Conceptual: 
+Single inheritance is a type of inheritance where a derived class inherits from only one base class.
+
+In simple words, it means one class (child) gets properties and behaviors from another class (parent).
+Code:-
+
+#include <iostream>
+using namespace std;
+
+class Parent {  // Base class
+public:
+    void display() {
+        cout << "This is the Parent class.\n";
+    }
+};
+
+class Child : public Parent {  // Derived class (inherits Parent)
+public:
+    void show() {
+        cout << "This is the Child class.\n";
+    }
+};
+
+int main() {
+    Child obj;  // Object of derived class
+    obj.display();  // Accessing base class function
+    obj.show();     // Accessing derived class function
+    return 0;
+}
+Q16.Program for Multilevel inheritance.
+
+Viva Conceptual: 
+Multilevel inheritance is a type of inheritance where a class is derived from another derived class, forming a chain.
+
+In simple words, it's like a family tree—one class inherits from another, and then a third class inherits from the second one. 
+Code:-
+
+#include <iostream>
+using namespace std;
+
+class Grandparent {  // Base class
+public:
+    void grandparentFunction() {
+        cout << "This is the Grandparent class.\n";
+    }
+};
+
+class Parent : public Grandparent {  // Derived from Grandparent
+public:
+    void parentFunction() {
+        cout << "This is the Parent class.\n";
+    }
+};
+
+class Child : public Parent {  // Derived from Parent
+public:
+    void childFunction() {
+        cout << "This is the Child class.\n";
+    }
+};
+
+int main() {
+    Child obj;  // Object of the Child class
+    obj.grandparentFunction();  // Accessing Grandparent class function
+    obj.parentFunction();       // Accessing Parent class function
+    obj.childFunction();        // Accessing Child class function
+    return 0;
+}
+Q17. Program for Multiple inheritance.
+
+Viva Conceptual: 
+Multiple inheritance is when a class inherits from more than one base class.
+
+In simple words, it means a child class can have features from multiple parent classes. 
+Code:-
+
+#include <iostream>
+using namespace std;
+
+class Father {  // First Base Class
+public:
+    void fatherFunction() {
+        cout << "This is the Father class.\n";
+    }
+};
+
+class Mother {  // Second Base Class
+public:
+    void motherFunction() {
+        cout << "This is the Mother class.\n";
+    }
+};
+
+class Child : public Father, public Mother {  // Derived Class (inherits from both Father & Mother)
+public:
+    void childFunction() {
+        cout << "This is the Child class.\n";
+    }
+};
+
+int main() {
+    Child obj;  // Object of Child class
+    obj.fatherFunction();  // Accessing function from Father class
+    obj.motherFunction();  // Accessing function from Mother class
+    obj.childFunction();   // Accessing function from Child class
+    return 0;
+}
+Q18.Program for exception handeling
+
+Viva Conceptual: 
+Exception handling is a way to handle runtime errors in a program without crashing it.
+
+This ensures the program runs smoothly even if something goes wrong, like dividing by zero or accessing an invalid array index.
+Code:-
+
+#include <iostream>
+using namespace std;
+
+double divide(double a, double b) {  // Changed return type to double
+    if (b == 0) {
+        throw runtime_error("Division by zero is not allowed.");
+    }
+    return a / b;  // Floating-point division
+}
+
+int main() {
+    double num1, num2;
+    cout << "Enter two numbers: ";
+    cin >> num1 >> num2;
+
+    try {
+        double result = divide(num1, num2);
+        cout << "Result: " << result << endl;
+    }
+    catch (const runtime_error& e) {
+        cout << "Error: " <<e.what() << endl;
+    }
+
+    return 0;
+}
+Q19.Design a class FileDemo, open a file in read mode and display the total number of words and lines in the file.
+Code:-
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class FileDemo {
+public:
+    void countWordsLines(string filename) {
+        ifstream file(filename);  // Open file in read mode
+        string word, line;
+        int wordCount = 0, lineCount = 0;
+
+        if (!file) {
+            cout << "File not found!" << endl;
+            return;
+        }
+
+        while (getline(file, line)) {  
+            lineCount++;  // Counting lines
+            int pos = 0;
+            while (pos < line.length()) {  
+                while (pos < line.length() && line[pos] == ' ') pos++;  // Skip spaces
+                if (pos < line.length()) wordCount++;  // Count word
+                while (pos < line.length() && line[pos] != ' ') pos++;  // Move to next word
+            }
+        }
+
+        file.close();
+        cout << "Total Words: " << wordCount << "\nTotal Lines: " << lineCount << endl;
+    }
+};
+
+int main() {
+    FileDemo obj;
+    obj.countWordsLines("sample.txt");  // Provide the filename here
+    return 0;
+}
+Q20.Program for function templates(multiple).
+Code:-
+
+#include <iostream>
+using namespace std;
+
+// Template for addition
+template <typename T>
+T add(T a, T b) {
+    return a + b;
+}
+
+// Template for multiplication
+template <typename T>
+T multiply(T a, T b) {
+    return a * b;
+}
+
+int main() {
+    cout << "Addition of integers: " << add(5, 3) << endl;
+    cout << "Addition of floats: " << add(2.5, 1.5) << endl;
+    
+    cout << "Multiplication of integers: " << multiply(4, 2) << endl;
+    cout << "Multiplication of floats: " << multiply(3.5, 2.0) << endl;
+
+    return 0;
+}
+Q21.Program for class template.
+Code:-
+
+#include <iostream>
+using namespace std;
+
+template <typename T>  // Class template
+class Sample {
+    T data;  // Generic data member
+
+public:
+    Sample(T value) {  // Constructor to initialize data
+        data = value;
+    }
+
+    void display() {  // Function to display data
+        cout << "Value: " << data << endl;
+    }
+};
+
+int main() {
+    Sample<int> obj1(10);       // Object with int type
+    Sample<double> obj2(3.14);  // Object with double type
+    Sample<string> obj3("Hello"); // Object with string type
+
+    obj1.display();
+    obj2.display();
+    obj3.display();
+
+    return 0;
+}
+
